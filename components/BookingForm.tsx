@@ -92,7 +92,7 @@ export default function BookingForm({ selectedPackage }: BookingFormProps) {
                   name="nome"
                   value={formData.nome}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 rounded-lg border border-purple-200 focus:outline-none focus:border-teal-500"
+                  className="text-gray-900 w-full px-4 py-3 rounded-lg border border-purple-200 focus:outline-none focus:border-teal-500"
                   placeholder="Seu nome"
                 />
               </div>
@@ -104,7 +104,7 @@ export default function BookingForm({ selectedPackage }: BookingFormProps) {
                   name="email"
                   value={formData.email}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 rounded-lg border border-purple-200 focus:outline-none focus:border-teal-500"
+                  className="text-gray-900 w-full px-4 py-3 rounded-lg border border-purple-200 focus:outline-none focus:border-teal-500"
                   placeholder="seu@email.com"
                 />
               </div>
@@ -118,7 +118,7 @@ export default function BookingForm({ selectedPackage }: BookingFormProps) {
                   name="telefone"
                   value={formData.telefone}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 rounded-lg border border-purple-200 focus:outline-none focus:border-teal-500"
+                  className="text-gray-900 w-full px-4 py-3 rounded-lg border border-purple-200 focus:outline-none focus:border-teal-500"
                   placeholder="(00) 00000-0000"
                 />
               </div>
@@ -130,7 +130,7 @@ export default function BookingForm({ selectedPackage }: BookingFormProps) {
                   name="data"
                   value={formData.data}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 rounded-lg border border-purple-200 focus:outline-none focus:border-teal-500"
+                  className="text-gray-900 w-full px-4 py-3 rounded-lg border border-purple-200 focus:outline-none focus:border-teal-500"
                 />
               </div>
             </div>
@@ -142,7 +142,7 @@ export default function BookingForm({ selectedPackage }: BookingFormProps) {
                   name="pacote"
                   value={formData.pacote}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 rounded-lg border border-purple-200 focus:outline-none focus:border-teal-500"
+                  className="text-gray-900 w-full px-4 py-3 rounded-lg border border-purple-200 focus:outline-none focus:border-teal-500"
                 >
                   {!selectedPackage && <option value="">Selecione um pacote</option>}
                   {pacotes.map(p => (
@@ -159,7 +159,7 @@ export default function BookingForm({ selectedPackage }: BookingFormProps) {
                   value={formData.pessoas}
                   onChange={handleChange}
                   min="1"
-                  className="w-full px-4 py-3 rounded-lg border border-purple-200 focus:outline-none focus:border-teal-500"
+                  className="text-gray-900 w-full px-4 py-3 rounded-lg border border-purple-200 focus:outline-none focus:border-teal-500"
                 />
               </div>
             </div>
@@ -171,7 +171,7 @@ export default function BookingForm({ selectedPackage }: BookingFormProps) {
                 value={formData.mensagem}
                 onChange={handleChange}
                 rows={4}
-                className="w-full px-4 py-3 rounded-lg border border-purple-200 focus:outline-none focus:border-teal-500"
+                className="text-gray-900 w-full px-4 py-3 rounded-lg border border-purple-200 focus:outline-none focus:border-teal-500"
                 placeholder="Alguma observação ou dúvida?"
               ></textarea>
             </div>
