@@ -17,13 +17,12 @@ export async function POST(request: NextRequest) {
 
     const pacoteNome = pacoteNomes[pacote] || pacote;
 
-    const { data: emailData, error } = await resend.emails.send({
-      from: 'Simbiose Turismo <onboarding@resend.dev>', // Depois muda pra seu domínio
-      to: ['danielsimonian@gmail.com'], // Email onde vai receber os agendamentos
-      replyTo: email,
-      subject: `Novo Agendamento - ${pacoteNome}`,
-      html: `
-        <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
+const { data: emailData, error } = await resend.emails.send({
+  from: 'Simbiose Turismo <onboarding@resend.dev>',
+  to: ['danielsimonianti@gmail.com'], // Seu Gmail aqui
+  subject: `Novo Agendamento - ${pacoteNome}`,
+  html: `
+    <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
           <div style="background: linear-gradient(135deg, #581c87 0%, #14b8a6 100%); padding: 30px; text-align: center;">
             <h1 style="color: white; margin: 0; font-size: 32px;">SIMBIOSE</h1>
             <p style="color: #e9d5ff; margin: 5px 0 0 0;">Novo Agendamento de Passeio</p>
