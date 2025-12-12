@@ -20,24 +20,48 @@ export default function BookingForm({ selectedPackage }: BookingFormProps) {
   });
   const [formStatus, setFormStatus] = useState('');
 
-  const handleSubmit = (e: React.MouseEvent) => {
+  const handleSubmit = async (e: React.MouseEvent) => {
     e.preventDefault();
+    
+    // Validação básica
+    if (!formData.nome || !formData.email || !formData.telefone || !formData.data || !formData.pacote) {
+      alert('Por favor, preencha todos os campos obrigatórios.');
+      return;
+    }
+    
     setFormStatus('enviando');
     
-    setTimeout(() => {
-      setFormStatus('sucesso');
-      setFormData({
-        nome: '',
-        email: '',
-        telefone: '',
-        data: '',
-        pacote: '',
-        pessoas: '1',
-        mensagem: ''
+    try {
+      const response = await fetch('/api/send-booking', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
       });
-      
-      setTimeout(() => setFormStatus(''), 3000);
-    }, 1500);
+
+      if (response.ok) {
+        setFormStatus('sucesso');
+        setFormData({
+          nome: '',
+          email: '',
+          telefone: '',
+          data: '',
+          pacote: '',
+          pessoas: '1',
+          mensagem: ''
+        });
+        
+        setTimeout(() => setFormStatus(''), 5000);
+      } else {
+        setFormStatus('erro');
+        setTimeout(() => setFormStatus(''), 5000);
+      }
+    } catch (error) {
+      console.error('Erro ao enviar:', error);
+      setFormStatus('erro');
+      setTimeout(() => setFormStatus(''), 5000);
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
@@ -163,6 +187,12 @@ export default function BookingForm({ selectedPackage }: BookingFormProps) {
             {formStatus === 'sucesso' && (
               <div className="mt-4 bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded-lg text-center">
                 ✓ Solicitação enviada com sucesso! Entraremos em contato em breve.
+              </div>
+            )}
+
+            {formStatus === 'erro' && (
+              <div className="mt-4 bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded-lg text-center">
+                ✗ Erro ao enviar solicitação. Tente novamente.
               </div>
             )}
           </div>
